@@ -3,7 +3,6 @@ import os
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import DeclarativeBase, sessionmaker
 
-
 DATABASE_URL = (
     f"postgresql://{os.getenv('POSTGRES_USER')}"
     f":{os.getenv('POSTGRES_PASSWORD')}"
