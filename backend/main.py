@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 
+from database import check_db_connection
+
 app = FastAPI(title="Melodia API")
 
 
@@ -10,4 +12,8 @@ def root():
 
 @app.get("/health")
 def health():
-    return {"status": "ok"}
+    db_ok = check_db_connection()
+    return {
+        "status": "ok" if db_ok else "degraded",
+        "database": "connected" if db_ok else "unreachable",
+    }
